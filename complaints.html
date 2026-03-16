@@ -79,8 +79,8 @@ font-size:2.6rem;
 }
 
 .hero p{
-margin-top:10px;
 opacity:.75;
+margin-top:10px;
 max-width:650px;
 margin:auto;
 }
@@ -88,12 +88,12 @@ margin:auto;
 /* FORM */
 
 .section{
-max-width:800px;
+max-width:820px;
 margin:auto;
 padding:40px 20px;
 }
 
-.form-card{
+.card{
 background:var(--card);
 padding:30px;
 border-radius:12px;
@@ -111,11 +111,10 @@ margin-bottom:6px;
 font-weight:500;
 }
 
-input, select, textarea{
+input,select,textarea{
 padding:10px;
 border-radius:6px;
 border:1px solid rgba(0,0,0,.2);
-background:white;
 }
 
 [data-theme="dark"] input,
@@ -128,7 +127,6 @@ border:1px solid rgba(255,255,255,.2);
 
 textarea{
 min-height:120px;
-resize:vertical;
 }
 
 button{
@@ -146,10 +144,27 @@ button:hover{
 opacity:.9;
 }
 
-.notice{
+/* REPORT ID */
+
+.report-id{
 margin-top:15px;
-opacity:.7;
+font-weight:600;
+color:var(--accent);
+}
+
+/* LOG */
+
+.log{
+margin-top:40px;
+}
+
+.log-item{
+background:var(--card);
+padding:15px;
+border-radius:8px;
+margin-top:10px;
 font-size:.9rem;
+opacity:.85;
 }
 
 footer{
@@ -183,17 +198,17 @@ opacity:.6;
 <h1>Submit a Complaint</h1>
 
 <p>
-Report broadcast violations, harmful content, or regulatory concerns to the
-Anarchy Broadcasting Authority for review.
+Report potential broadcast violations, harmful content, or regulatory concerns
+to the Anarchy Broadcasting Authority investigation team.
 </p>
 
 </section>
 
 <section class="section">
 
-<div class="form-card">
+<div class="card">
 
-<form id="complaintForm">
+<form id="reportForm">
 
 <div class="form-group">
 <label>Your Name (optional)</label>
@@ -201,52 +216,82 @@ Anarchy Broadcasting Authority for review.
 </div>
 
 <div class="form-group">
-<label>Your Email (optional)</label>
+<label>Email (optional)</label>
 <input type="email" id="email">
 </div>
 
 <div class="form-group">
-<label>Type of Report</label>
+<label>Report Type</label>
 <select id="type" required>
-<option value="">Select report type</option>
-<option>Broadcast Policy Violation</option>
-<option>Harassment or Abuse</option>
+<option value="">Select</option>
+<option>Policy Violation</option>
+<option>Harassment / Abuse</option>
 <option>Misinformation</option>
 <option>Illegal Content</option>
-<option>Copyright Violation</option>
-<option>Other Concern</option>
+<option>Copyright</option>
+<option>Other</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Severity Level</label>
+<select id="severity" required>
+<option>Low</option>
+<option>Moderate</option>
+<option>High</option>
+<option>Critical</option>
 </select>
 </div>
 
 <div class="form-group">
 <label>Platform / Broadcaster</label>
-<input type="text" id="platform" placeholder="Example: Anarchy Player channel name">
+<input type="text" id="platform">
 </div>
 
 <div class="form-group">
-<label>Content Link or Broadcast URL</label>
-<input type="url" id="link" placeholder="https://">
+<label>Content URL</label>
+<input type="url" id="link">
 </div>
 
 <div class="form-group">
-<label>Incident Timestamp (optional)</label>
-<input type="text" id="timestamp" placeholder="Example: 12:45 in stream">
+<label>Incident Timestamp</label>
+<input type="text" id="timestamp">
 </div>
 
 <div class="form-group">
-<label>Description of Issue</label>
+<label>Evidence Upload</label>
+<input type="file">
+</div>
+
+<div class="form-group">
+<label>Description</label>
 <textarea id="description" required></textarea>
 </div>
 
-<button type="submit">Submit Complaint</button>
+<button type="submit">Submit Report</button>
 
 </form>
 
-<p class="notice">
-Reports are reviewed by the Anarchy Broadcasting Authority moderation team.
-False reports may be ignored or dismissed.
-</p>
+<div class="report-id" id="reportID"></div>
 
+</div>
+
+</section>
+
+<section class="section log">
+
+<h2>Public Transparency Log</h2>
+
+<div class="log-item">
+Case ABA-2026-1042 — Playback moderation investigation completed.
+</div>
+
+<div class="log-item">
+Case ABA-2026-0978 — Broadcast policy violation warning issued.
+</div>
+
+<div class="log-item">
+Case ABA-2026-0951 — Harassment complaint resolved.
 </div>
 
 </section>
@@ -254,42 +299,60 @@ False reports may be ignored or dismissed.
 <footer>
 
 © 2026 Anarchy Broadcasting Authority  
-Regulatory Division of the Anarchy Group Network
+Network Oversight Division
 
 </footer>
 
 <script>
 
-/* theme restore */
+/* restore theme */
 
 const saved=localStorage.getItem("theme")
 if(saved==="dark"){
 document.documentElement.setAttribute("data-theme","dark")
 }
 
-/* form submission */
+/* generate report ID */
 
-document.getElementById("complaintForm").addEventListener("submit",function(e){
+function generateID(){
+
+let year=new Date().getFullYear()
+let random=Math.floor(1000+Math.random()*9000)
+
+return "ABA-"+year+"-"+random
+
+}
+
+/* form submit */
+
+document.getElementById("reportForm").addEventListener("submit",function(e){
 
 e.preventDefault()
+
+let reportID=generateID()
+
+document.getElementById("reportID").innerText=
+"Report Reference: "+reportID
 
 let name=document.getElementById("name").value
 let email=document.getElementById("email").value
 let type=document.getElementById("type").value
+let severity=document.getElementById("severity").value
 let platform=document.getElementById("platform").value
 let link=document.getElementById("link").value
 let timestamp=document.getElementById("timestamp").value
 let description=document.getElementById("description").value
 
-let subject="ABA Complaint Report: "+type
+let subject="ABA Complaint "+reportID
 
 let body=
-"Complaint Report\n\n"+
+"Complaint Report "+reportID+"\n\n"+
 "Name: "+name+"\n"+
 "Email: "+email+"\n"+
-"Report Type: "+type+"\n"+
-"Platform/Broadcaster: "+platform+"\n"+
-"Content Link: "+link+"\n"+
+"Type: "+type+"\n"+
+"Severity: "+severity+"\n"+
+"Platform: "+platform+"\n"+
+"Link: "+link+"\n"+
 "Timestamp: "+timestamp+"\n\n"+
 "Description:\n"+description
 
@@ -298,7 +361,9 @@ let mailto="mailto:abareports@anarchygroup.uk?subject="
 +"&body="
 +encodeURIComponent(body)
 
+setTimeout(()=>{
 window.location.href=mailto
+},800)
 
 })
 
