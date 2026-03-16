@@ -55,16 +55,64 @@ z-index:1000;
 
 .logo{
 font-weight:700;
+letter-spacing:1px;
 }
 
 .nav-links{
 display:flex;
 gap:25px;
+align-items:center;
 }
 
 .nav-links a{
 text-decoration:none;
 color:var(--text);
+}
+
+/* dropdown */
+
+.dropdown{
+position:relative;
+}
+
+.dropdown-menu{
+position:absolute;
+top:100%;
+left:0;
+background:rgba(20,20,20,.75);
+backdrop-filter:blur(16px);
+border-radius:10px;
+padding:10px 0;
+min-width:200px;
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+opacity:0;
+pointer-events:none;
+
+transform:translateY(-6px);
+transition:.25s;
+}
+
+.dropdown:hover .dropdown-menu{
+opacity:1;
+pointer-events:auto;
+transform:translateY(0);
+}
+
+.dropdown-menu a{
+display:block;
+padding:10px 16px;
+color:white;
+}
+
+/* theme button */
+
+.theme-toggle{
+background:var(--accent);
+color:white;
+padding:7px 14px;
+border-radius:6px;
+cursor:pointer;
 }
 
 /* HERO */
