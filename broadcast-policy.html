@@ -1,0 +1,398 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Broadcast Policy | Anarchy Broadcasting Authority</title>
+
+<style>
+
+:root{
+--bg:#ffffff;
+--text:#111;
+--card:#f3f3f3;
+--accent:#ff3b5c;
+--nav:rgba(255,255,255,.65);
+}
+
+[data-theme="dark"]{
+--bg:#0b0b0b;
+--text:#f5f5f5;
+--card:#161616;
+--nav:rgba(10,10,10,.65);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui,sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+transition:.3s;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:16px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(14px);
+background:var(--nav);
+border-bottom:1px solid rgba(255,255,255,.1);
+z-index:1000;
+}
+
+.logo{
+font-weight:700;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:var(--text);
+}
+
+/* HERO */
+
+.hero{
+padding-top:140px;
+padding-bottom:60px;
+text-align:center;
+}
+
+.hero h1{
+font-size:2.8rem;
+}
+
+.hero p{
+margin-top:12px;
+opacity:.75;
+max-width:650px;
+margin-left:auto;
+margin-right:auto;
+}
+
+/* SECTIONS */
+
+.section{
+max-width:1100px;
+margin:auto;
+padding:60px 20px;
+}
+
+.section h2{
+margin-bottom:15px;
+}
+
+.section p{
+opacity:.85;
+line-height:1.7;
+}
+
+/* GRID CARDS */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
+margin-top:25px;
+}
+
+.card{
+background:var(--card);
+padding:26px;
+border-radius:12px;
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+box-shadow:0 18px 35px rgba(0,0,0,.25);
+}
+
+/* POLICY LIST */
+
+.policy-list{
+margin-top:20px;
+line-height:1.7;
+opacity:.9;
+}
+
+.policy-list li{
+margin-bottom:10px;
+}
+
+/* CLASSIFICATION TABLE */
+
+.rating-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:20px;
+}
+
+.rating{
+background:var(--card);
+padding:20px;
+border-radius:10px;
+}
+
+.rating strong{
+font-size:1.3rem;
+color:var(--accent);
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:40px;
+opacity:.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">ABA</div>
+
+<div class="nav-links">
+
+<a href="/">Home</a>
+<a href="/broadcast-policy.html">Broadcast Policy</a>
+<a href="#">Press</a>
+<a href="#">Status</a>
+
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Broadcast Policy Framework</h1>
+
+<p>
+The Anarchy Broadcasting Authority establishes guidelines for digital broadcasting,
+streaming platforms, creators, and media organisations participating within the
+Anarchy network ecosystem.
+</p>
+
+</section>
+
+<section class="section">
+
+<h2>Core Broadcasting Principles</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Transparency</h3>
+<p>
+Broadcast content must clearly identify the individual, organisation, or entity responsible for publication.
+Anonymous broadcasts that impersonate others or mislead audiences are prohibited.
+</p>
+</div>
+
+<div class="card">
+<h3>Audience Protection</h3>
+<p>
+Content creators should consider the safety and wellbeing of viewers,
+particularly where content may include sensitive, mature, or controversial topics.
+</p>
+</div>
+
+<div class="card">
+<h3>Platform Neutrality</h3>
+<p>
+Broadcast standards apply regardless of distribution method, including live streams,
+video platforms, decentralised hosting networks, or embedded media services.
+</p>
+</div>
+
+<div class="card">
+<h3>Responsible Speech</h3>
+<p>
+Broadcasts must not promote harassment, targeted abuse, coordinated attacks,
+or harmful misinformation campaigns.
+</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Broadcast Licensing</h2>
+
+<p>
+Organisations or individuals distributing structured programming, livestream channels,
+or large-scale digital media operations may be required to register as a recognised
+broadcaster within the Anarchy network.
+</p>
+
+<ul class="policy-list">
+
+<li>Broadcast entities must provide a verified contact or administrative channel.</li>
+
+<li>Creators operating commercial or monetised broadcast channels may require registration.</li>
+
+<li>Broadcast operators should maintain moderation capabilities during live programming.</li>
+
+<li>Platforms distributing broadcast content should maintain content reporting tools.</li>
+
+</ul>
+
+</section>
+
+<section class="section">
+
+<h2>Content Classification System</h2>
+
+<p>
+To help audiences understand the nature of broadcast material, the Authority recommends
+the following classification categories for streaming and recorded media.
+</p>
+
+<div class="rating-grid">
+
+<div class="rating">
+<strong>G</strong>
+<p>General audience content suitable for all ages.</p>
+</div>
+
+<div class="rating">
+<strong>T</strong>
+<p>Content containing mild themes or language intended for teen audiences.</p>
+</div>
+
+<div class="rating">
+<strong>M</strong>
+<p>Material with mature discussion topics, strong language, or intense themes.</p>
+</div>
+
+<div class="rating">
+<strong>18+</strong>
+<p>Adult-oriented content that may contain explicit or highly sensitive material.</p>
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>Creator Compliance</h2>
+
+<ul class="policy-list">
+
+<li>Creators should ensure content does not violate intellectual property rights.</li>
+
+<li>Live broadcasts should include moderation systems where audience interaction exists.</li>
+
+<li>Creators should clearly label sponsored or promotional material.</li>
+
+<li>Content involving minors must follow strict safety and privacy protections.</li>
+
+<li>Creators must respond reasonably to legitimate content complaints.</li>
+
+</ul>
+
+</section>
+
+<section class="section">
+
+<h2>Complaints & Investigations</h2>
+
+<p>
+Members of the public may submit complaints regarding broadcasts believed to violate
+policy guidelines. Complaints may be reviewed by the Authority where appropriate.
+</p>
+
+<ul class="policy-list">
+
+<li>Complaints should include the broadcast source and timestamp where possible.</li>
+
+<li>The Authority may request clarification from the broadcaster or platform.</li>
+
+<li>Content may be temporarily restricted during investigation.</li>
+
+<li>Repeat violations may result in broadcaster warnings or platform restrictions.</li>
+
+</ul>
+
+</section>
+
+<section class="section">
+
+<h2>Enforcement Measures</h2>
+
+<p>
+Where broadcasters repeatedly violate policy guidelines, the Authority may recommend
+the following enforcement measures.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>Advisory Notice</h3>
+<p>Initial warning issued to a broadcaster identifying potential policy violations.</p>
+</div>
+
+<div class="card">
+<h3>Content Restrictions</h3>
+<p>Temporary limitation of broadcast visibility or platform distribution.</p>
+</div>
+
+<div class="card">
+<h3>Broadcast Suspension</h3>
+<p>Temporary suspension from the broadcast network for severe or repeated violations.</p>
+</div>
+
+<div class="card">
+<h3>Network Ban</h3>
+<p>Permanent removal from the Anarchy broadcast ecosystem.</p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Anarchy Broadcasting Authority  
+A regulatory division of the Anarchy Group network.
+
+</footer>
+
+<script>
+
+const saved=localStorage.getItem("theme")
+
+if(saved==="dark"){
+document.documentElement.setAttribute("data-theme","dark")
+}
+
+</script>
+
+</body>
+</html>
+```
