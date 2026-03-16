@@ -1,0 +1,332 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Apply for Broadcasting Authorisation | ABA</title>
+
+<style>
+
+:root{
+--bg:#ffffff;
+--text:#111;
+--card:#f3f3f3;
+--accent:#ff3b5c;
+--nav:rgba(255,255,255,.65);
+}
+
+[data-theme="dark"]{
+--bg:#0b0b0b;
+--text:#f5f5f5;
+--card:#161616;
+--nav:rgba(10,10,10,.65);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:system-ui,sans-serif;
+}
+
+body{
+background:var(--bg);
+color:var(--text);
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+padding:16px 40px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(14px);
+background:var(--nav);
+border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+}
+
+.nav-links a{
+text-decoration:none;
+color:var(--text);
+}
+
+/* HERO */
+
+.hero{
+padding-top:140px;
+padding-bottom:40px;
+text-align:center;
+}
+
+.hero h1{
+font-size:2.5rem;
+}
+
+.hero p{
+margin-top:10px;
+opacity:.75;
+max-width:700px;
+margin:auto;
+}
+
+/* FORM */
+
+.section{
+max-width:850px;
+margin:auto;
+padding:40px 20px;
+}
+
+.card{
+background:var(--card);
+padding:30px;
+border-radius:12px;
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+}
+
+.form-group{
+margin-bottom:18px;
+display:flex;
+flex-direction:column;
+}
+
+label{
+margin-bottom:6px;
+font-weight:500;
+}
+
+input,select,textarea{
+padding:10px;
+border-radius:6px;
+border:1px solid rgba(0,0,0,.2);
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea{
+background:#111;
+color:white;
+border:1px solid rgba(255,255,255,.2);
+}
+
+textarea{
+min-height:120px;
+}
+
+button{
+margin-top:10px;
+padding:12px;
+border:none;
+background:var(--accent);
+color:white;
+border-radius:6px;
+cursor:pointer;
+font-size:1rem;
+}
+
+button:hover{
+opacity:.9;
+}
+
+.ref{
+margin-top:15px;
+font-weight:600;
+color:var(--accent);
+}
+
+footer{
+text-align:center;
+padding:40px;
+opacity:.6;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">ABA</div>
+
+<div class="nav-links">
+<a href="/">Home</a>
+<a href="/broadcast-policy.html">Policy</a>
+<a href="/regulations.html">Regulations</a>
+<a href="/status.html">Status</a>
+<a href="/complaints.html">Complaints</a>
+<a href="/apply.html">Apply</a>
+</div>
+
+</nav>
+
+<section class="hero">
+
+<h1>Broadcast Authorisation Application</h1>
+
+<p>
+Apply for recognition or authorisation to operate a broadcast channel,
+platform, or media service within the Anarchy Broadcasting Authority
+network framework.
+</p>
+
+</section>
+
+<section class="section">
+
+<div class="card">
+
+<form id="applyForm">
+
+<div class="form-group">
+<label>Organisation / Channel Name</label>
+<input type="text" id="org" required>
+</div>
+
+<div class="form-group">
+<label>Primary Contact Name</label>
+<input type="text" id="contact" required>
+</div>
+
+<div class="form-group">
+<label>Contact Email</label>
+<input type="email" id="email" required>
+</div>
+
+<div class="form-group">
+<label>Broadcast Platform Type</label>
+<select id="platform">
+<option>Streaming Platform</option>
+<option>Video Platform</option>
+<option>Digital Channel</option>
+<option>Podcast Network</option>
+<option>Media Organisation</option>
+<option>Independent Creator</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Primary Content Category</label>
+<select id="category">
+<option>Entertainment</option>
+<option>News / Commentary</option>
+<option>Gaming</option>
+<option>Technology</option>
+<option>Education</option>
+<option>Creative Media</option>
+<option>Mixed Content</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Platform or Channel URL</label>
+<input type="url" id="url">
+</div>
+
+<div class="form-group">
+<label>Summary of Broadcast Activities</label>
+<textarea id="description" required></textarea>
+</div>
+
+<div class="form-group">
+<label>
+<input type="checkbox" required>
+I confirm the broadcaster will comply with ABA broadcast policies and regulations.
+</label>
+</div>
+
+<button type="submit">Submit Application</button>
+
+</form>
+
+<div class="ref" id="ref"></div>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Anarchy Broadcasting Authority  
+Regulatory Division of the Anarchy Group Network
+
+</footer>
+
+<script>
+
+/* restore theme */
+
+const saved=localStorage.getItem("theme")
+if(saved==="dark"){
+document.documentElement.setAttribute("data-theme","dark")
+}
+
+/* generate application ID */
+
+function generateID(){
+
+let year=new Date().getFullYear()
+let random=Math.floor(1000+Math.random()*9000)
+
+return "ABA-LIC-"+year+"-"+random
+
+}
+
+document.getElementById("applyForm").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+let id=generateID()
+
+document.getElementById("ref").innerText=
+"Application Reference: "+id
+
+let org=document.getElementById("org").value
+let contact=document.getElementById("contact").value
+let email=document.getElementById("email").value
+let platform=document.getElementById("platform").value
+let category=document.getElementById("category").value
+let url=document.getElementById("url").value
+let description=document.getElementById("description").value
+
+let subject="ABA Broadcast Application "+id
+
+let body=
+"Application ID: "+id+"\n\n"+
+"Organisation: "+org+"\n"+
+"Contact: "+contact+"\n"+
+"Email: "+email+"\n"+
+"Platform Type: "+platform+"\n"+
+"Content Category: "+category+"\n"+
+"URL: "+url+"\n\n"+
+"Broadcast Summary:\n"+description
+
+let mailto="mailto:abareports@anarchygroup.uk?subject="
++encodeURIComponent(subject)
++"&body="
++encodeURIComponent(body)
+
+setTimeout(()=>{
+window.location.href=mailto
+},900)
+
+})
+
+</script>
+
+</body>
+</html>
+```
